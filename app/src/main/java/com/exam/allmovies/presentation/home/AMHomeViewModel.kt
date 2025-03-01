@@ -1,6 +1,5 @@
 package com.exam.allmovies.presentation.home
 
-import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,7 +44,7 @@ class AMHomeViewModel @Inject constructor(
         }
     }
 
-    fun handleGetMovies(page: Int) {
+    private fun handleGetMovies(page: Int) {
         viewModelScope.launch {
             useCase.getMovies(page).collect { result ->
                 when (result) {
@@ -58,7 +57,6 @@ class AMHomeViewModel @Inject constructor(
                             loading = false,
                             dataMovies = result.data.listMovies.toMutableSet()
                         )
-                        Log.d("uvbiunim", result.data.listMovies.toString())
                     }
 
                     is Resource.Failure -> {

@@ -75,7 +75,6 @@ fun AMHome(
             .collect { shouldLoadMore ->
                 if (shouldLoadMore && !state.loading) {
                     state.pageNumbers.value++
-                    Log.d("PAGINACIÓN", "Cargando página: ${state.pageNumbers.value}")
                     viewModel.onEvent(AMHomeEvent.GetPopularMovies(state.pageNumbers.value))
                 }
             }
