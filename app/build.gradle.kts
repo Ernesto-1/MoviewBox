@@ -1,4 +1,5 @@
 import com.android.sdklib.AndroidVersion.VersionCodes.VANILLA_ICE_CREAM
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -9,6 +10,15 @@ plugins {
     alias(libs.plugins.kotlinxSerialization)
 
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val apiKey: String = localProperties.getProperty("API_KEY") ?: error("API_KEY not found")
 
 android {
     namespace = "com.exam.allmovies"
@@ -26,6 +36,8 @@ android {
             useSupportLibrary = true
         }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+
     }
 
     compileOptions {
