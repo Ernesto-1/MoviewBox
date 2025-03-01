@@ -1,5 +1,6 @@
 package com.exam.allmovies.domain
 
+import com.exam.allmovies.BuildConfig
 import com.exam.allmovies.data.remote.model.AMDetailDataClass
 import com.exam.allmovies.data.remote.model.AMListDataClass
 import retrofit2.http.GET
@@ -14,7 +15,7 @@ interface WebService {
     suspend fun getNowPlayingMovies(
         @Query("language") language: String = "en-US",
         @Query("page") page: Int,
-        @Query("api_key") apiKey: String = "55957fcf3ba81b137f8fc01ac5a31fb5"
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY
     ): AMListDataClass?
 
     @Headers("Content-Type: application/json")
@@ -22,7 +23,7 @@ interface WebService {
     suspend fun getPopularMovies(
         @Query("language") language: String = "en-US",
         @Query("page") page: Int,
-        @Query("api_key") apiKey: String = "55957fcf3ba81b137f8fc01ac5a31fb5"
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY
     ): AMListDataClass?
 
     @Headers("Content-Type: application/json")
@@ -30,7 +31,7 @@ interface WebService {
     suspend fun getDetailMovie(
         @Path("movie_id") movieId: String,
         @Query("language") language: String = "en-US",
-        @Query("api_key") apiKey: String = "55957fcf3ba81b137f8fc01ac5a31fb5",
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
     ): AMDetailDataClass?
 
 }

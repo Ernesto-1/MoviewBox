@@ -44,8 +44,10 @@ import com.exam.allmovies.presentation.detail.AMDetailViewModel
 import com.exam.allmovies.ui.components.AMButtonDefault
 import com.exam.allmovies.ui.components.ChipOption
 import com.exam.allmovies.ui.components.ListOptions
+import com.exam.allmovies.ui.theme.Blue600
 import com.exam.allmovies.ui.theme.bacgroudCard
 import com.exam.allmovies.ui.theme.description
+import com.exam.allmovies.ui.theme.green400
 import com.exam.allmovies.ui.theme.grey100
 import com.exam.allmovies.ui.utils.formatReleaseDate
 import kotlinx.coroutines.launch
@@ -202,7 +204,8 @@ fun AMDetail(
                         modifier = Modifier
                             .wrapContentWidth()
                             .padding(vertical = 12.dp),
-                        radius = 16.dp
+                        radius = 16.dp,
+                        colorBackground =  if (state.isOnWishList.value) Blue600 else green400
                     ) {
                         viewModel.onEvent(
                             AMDetailEvent.ChangeWishList(
