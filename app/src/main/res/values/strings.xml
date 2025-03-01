@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AllMovies</string>
+    <string name="overview">Overview</string>
+    <string name="add_wishlist">Add to Wish list</string>
+    <string name="remove_wishlist">Remove from Wish list</string>
+    <string name="wishList">Wish list</string>
+</resources>
