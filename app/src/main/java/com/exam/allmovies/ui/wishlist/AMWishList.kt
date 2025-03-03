@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,7 +17,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -84,7 +82,7 @@ fun AMWishList(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = bacgroudCard
                 ),
-                modifier = Modifier.height(50.dp),
+                modifier = Modifier.height(60.dp),
                 windowInsets = WindowInsets(top = 25.dp)
             )
         },
@@ -94,12 +92,12 @@ fun AMWishList(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
+                .padding(top = paddingValues.calculateBottomPadding()),
         ) {
             LazyColumn(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxWidth(),
+                    .fillMaxSize(),
                 contentPadding = PaddingValues(vertical = 16.dp)
             ) {
                 items(state.wishList.toList()) { popular ->
